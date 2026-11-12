@@ -3,7 +3,7 @@ import SwiftUI
 
 /*
  * The icons of the Settings tabs, used by SettingsView. General and Instructions
- * are pictures made for WhisperType, copied into Resources/. Account is drawn
+ * are pictures made for WhisperType, copied into Resources/. Sessions and Account are drawn
  * here in the same style as WhisperType's lighter icons: a grey symbol on a
  * near-white rounded square with a grey outline.
  */

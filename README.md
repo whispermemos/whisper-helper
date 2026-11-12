@@ -19,7 +19,8 @@ The source is public so you can see exactly what the app does on your Mac.
 3. You record a memo, for example "In Foodmark, add a dark mode toggle to settings."
    Whisper Memos picks the folder from its name and sends the memo to your Mac.
 4. The helper starts a Claude Code session in that folder and opens it in the Claude
-   desktop app.
+   desktop app. In Settings > Sessions you pick when: once Claude's first answer is ready
+   (the default), or right away as a Remote Control session you watch live.
 
 If the Mac is off, the memo waits for up to a day.
 
@@ -107,6 +108,14 @@ in `.build/artifacts/sparkle/Sparkle/bin/` after the first build.
   `script -q /dev/null claude --desktop --resume <id>`. `--desktop` refuses to run
   without a terminal, so `script` fakes one. The session shows up in the desktop app
   after the first turn ends.
+- **Remote Control mode.** The desktop app cannot send a prompt into a session, and a
+  `claude://code/new?folder=…&prompt=…` link only fills the box. Resuming a session that
+  is still running shows a frozen copy, and `claude --desktop --resume` refuses it. What
+  works: `claude --bg --remote-control "<title>" --name "<title>" --permission-mode
+  bypassPermissions "<memo>"`. It prints `backgrounded · <short id> · <title>` and ignores
+  `--session-id`. A few seconds later `claude logs <short id>` shows a
+  `claude.ai/code/session_…` link. Opening it as `claude://claude.ai/code/session_…` shows
+  the live session in the desktop app, under Remote Control.
 - **`claude` wants a lowercase session id.** Swift's `UUID().uuidString` is uppercase.
 - **PATH.** A Mac app started from Finder cannot find `claude` or `git`. Every command
   goes through `$SHELL -lic`, with values passed as `"$1"`, `"$2"`, so memo text is

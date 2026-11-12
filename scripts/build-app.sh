@@ -14,7 +14,8 @@ IDENTITY="${SIGN_IDENTITY:--}"
 
 sign() {
   if [ "$IDENTITY" = "-" ]; then
-    codesign --force --options runtime --sign - "$@"
+    # no hardened runtime: with it, macOS refuses to load an ad-hoc signed Sparkle
+    codesign --force --sign - "$@"
   else
     codesign --force --options runtime --timestamp --sign "$IDENTITY" "$@"
   fi

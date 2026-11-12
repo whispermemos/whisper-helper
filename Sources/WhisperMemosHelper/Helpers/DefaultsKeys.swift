@@ -7,5 +7,6 @@ enum DefaultsKey {
     static let email = "email"
     static let folders = "folders"
     static let isDockIconHidden = "isDockIconHidden"
+    static let launchMode = "launchMode"
     static let memoInstructions = "memoInstructions"
 }
