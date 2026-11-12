@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Whisper Memos Helper</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Thu, 12 Nov 2026 14:39:08 +0100</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/whispermemos/whisper-helper/releases/download/v0.1.0/WhisperMemosHelper.dmg" length="2209008" type="application/octet-stream" sparkle:edSignature="yYHV7YRDPUefWpR2x0gCjX59/E1i0iU756F++7752wWlhma9nQ9TzjSWaAY9OcfSQZmFar55WXVwR0yF/g4RCw=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: GvW1gUuMp3Zjc7joRFqN/H8w66FTlkzEvqzgBQzA/Ih5EN9XI+Mxy/pY991W5R2g31bgs5GOOsFPasdWCGIaDQ==
+length: 1067
+-->
