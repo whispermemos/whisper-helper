@@ -81,3 +81,7 @@ To point the helper at a local copy of the server, start it with
   macOS then draws the app in the old look. `scripts/build-app.sh` fixes the stamp with
   `vtool`. A plain `swift run` still shows the old look, and has no Settings tab pictures.
 - **"Start at login"** only works from the built app, not from `swift run`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
