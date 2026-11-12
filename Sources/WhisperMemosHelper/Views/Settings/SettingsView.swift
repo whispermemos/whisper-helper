@@ -1,12 +1,13 @@
 import SwiftUI
 
 /*
- * The Settings window (⌘,). Three tabs along the top: General, Instructions and
- * Account. The tab icons come from SettingsTabIcon.
+ * The Settings window (⌘,). Four tabs along the top: General, Sessions, Instructions
+ * and Account. The tab icons come from SettingsTabIcon.
  */
 struct SettingsView: View {
     private enum Tab {
         case general
+        case sessions
         case instructions
         case account
     }
@@ -24,6 +25,16 @@ struct SettingsView: View {
                     }
                 }
                 .tag(Tab.general)
+
+            SessionsSettingsView()
+                .tabItem {
+                    Label {
+                        Text("Sessions")
+                    } icon: {
+                        SettingsTabIcon.light(symbol: "macwindow")
+                    }
+                }
+                .tag(Tab.sessions)
 
             InstructionsSettingsView()
                 .tabItem {

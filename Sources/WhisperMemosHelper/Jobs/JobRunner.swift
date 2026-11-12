@@ -44,7 +44,7 @@ final class JobRunner: ObservableObject {
         report("Working on a memo in \(job.folder)")
         do {
             let prompt = MemoInstructions.prompt(memo: job.prompt, instructions: MemoInstructions.current)
-            try await ClaudeLauncher.launch(prompt: prompt, title: job.title, in: folder)
+            try await ClaudeLauncher.launch(prompt: prompt, title: job.title, in: folder, mode: LaunchMode.current)
             report("Started a session in \(job.folder)")
         } catch {
             report("Could not start a session in \(job.folder): \(error.localizedDescription)")
