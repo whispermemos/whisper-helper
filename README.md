@@ -3,6 +3,11 @@
 A small Mac app for [Whisper Memos](https://whispermemos.com). Record a voice memo on
 your iPhone, and a Claude Code session starts on your Mac in the folder you named.
 
+### [⬇️ Download Whisper Memos Helper for Mac](https://github.com/whispermemos/whisper-helper/releases/latest/download/WhisperMemosHelper.dmg)
+
+Requires macOS 15 or later. Open the DMG and drag Whisper Memos Helper into Applications.
+The app keeps itself up to date.
+
 The source is public so you can see exactly what the app does on your Mac.
 
 ## How it works
@@ -46,14 +51,44 @@ scripts/build-app.sh      # makes "build/Whisper Memos Helper.app"
 open "build/Whisper Memos Helper.app"
 ```
 
-There are no dependencies. To sign with your own Developer ID:
+The only dependency is [Sparkle](https://sparkle-project.org/), for updates. Swift fetches
+it by itself. To sign with your own Developer ID:
 
 ```bash
-SIGN_IDENTITY="Developer ID Application: ..." scripts/build-app.sh
+SIGN_IDENTITY="Developer ID Application" scripts/build-app.sh
 ```
 
 To point the helper at a local copy of the server, start it with
 `WHISPER_MEMOS_WORKER_URL=http://localhost:8787`.
+
+## Releases
+
+Updates use [Sparkle 2](https://sparkle-project.org/). The app reads a signed feed from
+[GitHub Pages](https://whispermemos.github.io/whisper-helper/appcast.xml) (the `gh-pages`
+branch) and downloads the DMG from GitHub Releases. Development builds (`swift run`)
+never start the updater.
+
+To release, bump `CFBundleShortVersionString` and `CFBundleVersion` in `Info.plist`,
+commit and push, then:
+
+```bash
+scripts/release.sh            # optional: build the notarized DMG and the feed locally
+```
+
+```bash
+scripts/release.sh --publish  # build, create the GitHub release, push the feed
+```
+
+`--publish` must run from a clean `main` that matches `origin/main`, and refuses a
+version that is already released. The feed keeps the three most recent versions.
+
+No secrets are in this repository. The release Mac needs a Developer ID certificate,
+notarization credentials in the Keychain (see `scripts/release.sh`), a signed-in `gh`
+CLI, and the Sparkle private key in the login Keychain under the account
+`whisper-helper`. Its public half is `SUPublicEDKey` in `Info.plist`. To move the key to
+another Mac, export it with Sparkle's `generate_keys --account whisper-helper -x <file>`
+and import it with `-f <file>`. Keep that file out of the repository. Sparkle's tools are
+in `.build/artifacts/sparkle/Sparkle/bin/` after the first build.
 
 ## Where things are
 
@@ -61,6 +96,7 @@ To point the helper at a local copy of the server, start it with
 - `Sources/WhisperMemosHelper/Worker/` the one WebSocket to the Whisper Memos server.
 - `Sources/WhisperMemosHelper/Jobs/` the folders, and starting a Claude Code session.
 - `Sources/WhisperMemosHelper/Views/` the main window, onboarding and Settings.
+- `Sources/WhisperMemosHelper/Updates/` checking for updates with Sparkle.
 - `docs/protocol.md` every message the helper sends and receives.
 
 ## Notes for developers

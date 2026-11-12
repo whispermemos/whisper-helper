@@ -11,6 +11,7 @@ struct MenuView: View {
     @EnvironmentObject private var pairing: PairingStore
     @EnvironmentObject private var connection: MailboxConnection
     @EnvironmentObject private var jobs: JobRunner
+    @EnvironmentObject private var updates: UpdateManager
 
     var body: some View {
         Text(ConnectionStatus(pairing: pairing, connection: connection).text)
@@ -32,6 +33,8 @@ struct MenuView: View {
             NSApp.activate()
         }
         .keyboardShortcut(",")
+
+        CheckForUpdatesButton(updates: updates)
 
         Divider()
 

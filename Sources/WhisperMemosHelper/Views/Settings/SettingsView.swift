@@ -45,6 +45,6 @@ struct SettingsView: View {
                 }
                 .tag(Tab.account)
         }
-        .frame(width: 480, height: 340)
+        .frame(width: 480, height: 380)
     }
 }

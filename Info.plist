@@ -20,6 +20,16 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>15.0</string>
+	<key>SUFeedURL</key>
+	<string>https://whispermemos.github.io/whisper-helper/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>K/jq5F68ASuuIcGqhdNONijAAD2Cq6Kn0CNZK9MnUdE=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUVerifyUpdateBeforeExtraction</key>
+	<true/>
+	<key>SURequireSignedFeed</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsLocalNetworking</key>
