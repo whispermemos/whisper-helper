@@ -29,6 +29,9 @@ If the Mac is off, the memo waits for up to a day.
 - **Sessions run with permissions bypassed.** Claude Code can run commands in the folder
   you named without asking. Only connect an account you trust: whoever can record memos
   on that account can run prompts on this Mac.
+- **Folders you add are trusted in Claude Code.** The helper accepts Claude Code's
+  "Do you trust this folder?" prompt for them (in `~/.claude.json`), since a background
+  session will not start in a folder that was never trusted.
 - **Scanning the QR code does nothing by itself.** Only tapping Allow in the iPhone app
   connects the Mac. The helper shows the email of the connected account.
 - **You can disconnect any time**, in Settings > Account, or from the iPhone app.
